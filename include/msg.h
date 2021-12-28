@@ -30,39 +30,39 @@ typedef unsigned char u_char;
 // The type that represents a message to be passed to the NXT over bluetooth.
 // vector type.
 typedef struct {
-  unsigned char* txt; // The data to send.
-  size_t         len; // The length of a message.
-  size_t         cap; // The capacity of the message (will increase if needed).
+   unsigned char* txt;  // The data to send.
+   size_t len;          // The length of a message.
+   size_t cap;  // The capacity of the message (will increase if needed).
 } nxt_msg;
 
 // Allocates a message starting with the type and opcodes.
 // Returns a pointer to the malloc'd message.
 // Mallocs a nxt_msg, be sure to free_msg() it elsewhere.
-nxt_msg *alloc_msg(char,char);
+nxt_msg* alloc_msg(char, char);
 
 // Safely frees a nxt_msg by freeing it's txt and then the rest.
 void free_msg(nxt_msg*);
 
 // msg_reset() == { free_msg(); alloc_msg(); }
-void msg_reset(nxt_msg*,char,char);
+void msg_reset(nxt_msg*, char, char);
 
 // Adds a signed 8 bit value to the msg.
-void msg_addS8(nxt_msg*,char);
+void msg_addS8(nxt_msg*, char);
 
 // Adds an unsigned 8 bit value to the msg.
-void msg_addU8(nxt_msg*,unsigned char);
+void msg_addU8(nxt_msg*, unsigned char);
 
 // Adds a signed 16 bit value to the msg.
-void msg_addS16(nxt_msg*,signed short int);
+void msg_addS16(nxt_msg*, signed short int);
 
 // Adds an unsigned 16 bit value to the msg.
-void msg_addU16(nxt_msg*,unsigned short int);
+void msg_addU16(nxt_msg*, unsigned short int);
 
 // Adds a signed 32 bit value to the msg.
-void msg_addS32(nxt_msg*,signed int);
+void msg_addS32(nxt_msg*, signed int);
 
 // Adds an unsigned 32 bit value to the msg.
-void msg_addU32(nxt_msg*,unsigned int);
+void msg_addU32(nxt_msg*, unsigned int);
 
 // return: the message as a signed short.
 short msg_bytes2S16(char*);
@@ -75,7 +75,6 @@ int msg_bytes2S32(char*);
 
 // return: the message as an unsigned short.
 unsigned int msg_bytes2U32(char*);
-
 
 /*
 message opcodes:
@@ -99,6 +98,5 @@ message opcodes:
   0x11: (get_current_program_name, _parse_get_current_program_name),
   0x13: (message_read, _parse_message_read),
 */
-
 
 #endif
